@@ -1,0 +1,11 @@
+Algorithm_Name,n,timeNs,comparisons,allocations,maxDepth
+MergeSort,100,902600,641,1,4
+MergeSort,500,295700,4461,1,6
+MergeSort,1000,526300,9908,1,7
+MergeSort,5000,983500,54283,1,10
+MergeSort,10000,684500,115699,1,11
+QuickSort,100,584400,89,0,10
+QuickSort,500,146200,490,0,16
+QuickSort,1000,353200,938,0,20
+QuickSort,5000,1330300,4861,0,24
+QuickSort,10000,1237600,9349,0,29
