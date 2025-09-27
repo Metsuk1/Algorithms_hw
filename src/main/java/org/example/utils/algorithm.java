@@ -1,5 +1,7 @@
 package org.example.utils;
 
+import org.example.entity.Point;
+
 import java.util.Random;
 
 /**
@@ -188,6 +190,28 @@ import java.util.Random;
         // save results in static variables
         partitionLt = lt;
         partitionGt = gt;
+    }
+
+
+    /**
+     * Brute force distance computation for small arrays.
+     */
+    public static double bruteForce(Point[] points) {
+        double min = Double.POSITIVE_INFINITY;
+        for (int i = 0; i < points.length; i++) {
+            for (int j = i + 1; j < points.length; j++) {
+                Metrics.recordComparison(); // one distance check
+                min = Math.min(min, dist(points[i], points[j]));
+            }
+        }
+        return min;
+    }
+
+    /**
+     * Euclidean distance between two points.
+     */
+    public static double dist(Point a, Point b) {
+        return Math.hypot(a.x - b.x, a.y - b.y);
     }
 }
 

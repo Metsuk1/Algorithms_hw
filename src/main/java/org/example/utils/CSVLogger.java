@@ -3,7 +3,10 @@ package org.example.utils;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class CSVLogger {
+/*
+This class is needed to write an excel file
+ */
+public class CSVLogger implements AutoCloseable {
     private final FileWriter writer;
 
 
@@ -17,6 +20,7 @@ public class CSVLogger {
         writer.flush();
     }
 
+    @Override
     public void close() throws IOException {
         writer.close();
     }
