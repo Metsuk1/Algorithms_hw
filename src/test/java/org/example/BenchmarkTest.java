@@ -1,7 +1,9 @@
 package org.example;
 
+import org.example.adapters.DeterministicSelectAdapter;
 import org.example.adapters.MergeSortAdapter;
 import org.example.adapters.QuickSortAdapter;
+import org.example.interfaces.SelectAlgorithm;
 import org.example.interfaces.SortAlgorithm;
 import org.example.utils.CSVLogger;
 import org.example.utils.Metrics;
@@ -14,7 +16,7 @@ import java.util.Random;
 public class BenchmarkTest {
 
     @Test
-    void benchmarkMergeSortAndExportCSV() throws IOException {
+    void benchmarkAndExportCSV() throws IOException {
         String fileName = "results.csv";
         CSVLogger logger = new CSVLogger(fileName);
 
@@ -34,15 +36,48 @@ public class BenchmarkTest {
                 algorithm.sort(arr);
                 long end = System.nanoTime();
 
-                long time = end - start;
+                double time = (double) (end - start) / 1_000_000;
 
                 logger.log(algorithm.name(),n, time, Metrics.getComparisons(),
                         Metrics.getAllocations(), Metrics.getMaxDepth());
             }
         }
 
+        List<SelectAlgorithm> selectAlgorithms = List.of(
+                new DeterministicSelectAdapter()
+        );
+
+        for (SelectAlgorithm algorithm : selectAlgorithms) {
+            for (int n : sizes) {
+                int[] originalArr = new Random().ints(n, -10000, 10000).toArray();
+
+                // Testing different positions
+                int[] testPositions = {0, n/4, n/2, 3*n/4, n-1};
+                String[] positionNames = {"Min", "Q1", "Median", "Q3", "Max"};
+
+                for (int i = 0; i < testPositions.length; i++) {
+                    int k = testPositions[i];
+                    String task = "Find" + positionNames[i];
+
+                    Metrics.reset();
+                    long start = System.nanoTime();
+                    int result = algorithm.select(originalArr.clone(), k);
+                    long end = System.nanoTime();
+
+                    double time = (double) (end - start) / 1_000_000;
+
+                    String algorithmWithPosition = algorithm.name() + "_" + task;
+
+                    logger.log(algorithmWithPosition,n,time,
+                            Metrics.getComparisons(), Metrics.getAllocations(),
+                            Metrics.getMaxDepth());
+                }
+            }
+
 
         logger.close();
         System.out.println("CSV results written to " + fileName);
+        }
     }
+
 }

@@ -9,10 +9,10 @@ public class CSVLogger {
 
     public CSVLogger(String fileName) throws IOException {
         writer = new FileWriter(fileName);
-        writer.write("Algorithm_Name,n,timeNs,comparisons,allocations,maxDepth\n");
+        writer.write("Algorithm_Name,n,timeMs,comparisons,allocations,maxDepth\n");
     }
 
-    public void log(String algorithmName,int n, long time, long comps, long allocs, int depth) throws IOException {
+    public void log(String algorithmName,int n, double time, long comps, long allocs, int depth) throws IOException {
         writer.write(algorithmName + "," + n + "," + time + "," + comps + "," + allocs + "," + depth + "\n");
         writer.flush();
     }
