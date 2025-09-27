@@ -1,7 +1,7 @@
 package org.example.algorithms;
 
-import org.example.Metrics;
-import org.example.algorithm;
+import org.example.utils.Metrics;
+import org.example.utils.algorithm;
 
 public class MergeSort extends algorithm {
     private static final int CASE_INSERTION_SORT = 16;

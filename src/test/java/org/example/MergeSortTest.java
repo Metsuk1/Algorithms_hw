@@ -1,6 +1,7 @@
 package org.example;
 
 import org.example.algorithms.MergeSort;
+import org.example.utils.Metrics;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -29,7 +30,7 @@ public class MergeSortTest {
         MergeSort.sort(arr);
 
         assertArrayEquals(new int[]{0,1,12,52,73},arr);
-        assertEquals(1,Metrics.getAllocations());
+        assertEquals(1, Metrics.getAllocations());
     }
 
 
