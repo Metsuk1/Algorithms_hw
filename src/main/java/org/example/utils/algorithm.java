@@ -1,4 +1,4 @@
-package org.example;
+package org.example.utils;
 
 import java.util.Random;
 
@@ -34,6 +34,9 @@ public class algorithm {
         }
     }
 
+    /*
+    Lomuto Partition
+     */
     public static int partition(int[] arr, int left, int right) {
         int randomPivot = left + rand.nextInt(right - left + 1);
         swap(arr, randomPivot, right);
@@ -50,5 +53,17 @@ public class algorithm {
         swap(arr, i + 1, right);
 
         return i + 1;
+    }
+
+    public static void checkArray(int[] arr) {
+        if(arr == null || arr.length == 0){
+            throw new IllegalArgumentException("Input array is null or empty");
+        }
+    }
+
+    public static void checkBounds(int[] arr,int k){
+        if (k < 0 || k >= arr.length) {
+            throw new IllegalArgumentException("k out of bounds");
+        }
     }
 }

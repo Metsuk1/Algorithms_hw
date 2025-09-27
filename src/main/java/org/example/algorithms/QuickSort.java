@@ -1,9 +1,7 @@
 package org.example.algorithms;
 
-import org.example.Metrics;
-import org.example.algorithm;
-
-import java.util.Random;
+import org.example.utils.Metrics;
+import org.example.utils.algorithm;
 
 public class QuickSort extends algorithm {
     private static final int CASE_INSERTION_SORT = 7;

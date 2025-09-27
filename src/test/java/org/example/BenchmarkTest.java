@@ -3,10 +3,11 @@ package org.example;
 import org.example.adapters.MergeSortAdapter;
 import org.example.adapters.QuickSortAdapter;
 import org.example.interfaces.SortAlgorithm;
+import org.example.utils.CSVLogger;
+import org.example.utils.Metrics;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
