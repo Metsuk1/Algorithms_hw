@@ -1,10 +1,7 @@
 # Algorithm Complexity Analysis Report          
-This project implements and benchmarks several classic algorithms:            
-          
-Sorting: MergeSort, QuickSort          
-          
-Selection: Deterministic Select (Median of Medians)          
-        
+This project implements and benchmarks several classic algorithms:                   
+Sorting: MergeSort, QuickSort                  
+Selection: Deterministic Select (Median of Medians)                
 Geometric: Closest Pair of Points (Divide & Conquer)          
         
 # The benchmarks track:                
